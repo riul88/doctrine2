@@ -366,7 +366,9 @@ public function __construct(<params>)
      */
     public function writeEntityClass(ClassMetadataInfo $metadata, $outputDirectory)
     {
-        $path = $outputDirectory . '/' . str_replace('\\', DIRECTORY_SEPARATOR, $metadata->name) . $this->extension;
+        $namespace = $metadata->name;
+        $zf3path = substr($namespace, strpos($namespace,'\\'));
+        $path = $outputDirectory . '/' . str_replace('\\', DIRECTORY_SEPARATOR, $zf3path) . $this->extension;
         $dir = dirname($path);
 
         if ( ! is_dir($dir)) {

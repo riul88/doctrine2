@@ -65,7 +65,9 @@ class AnnotationExporter extends AbstractExporter
      */
     protected function _generateOutputPath(ClassMetadataInfo $metadata)
     {
-        return $this->_outputDir . '/' . str_replace('\\', '/', $metadata->name) . $this->_extension;
+        $namespace = $metadata->name;
+        $zf3path = substr($namespace, strpos($namespace,'\\')+1);
+        return $this->_outputDir . '/' . str_replace('\\', '/', $zf3path) . $this->_extension;
     }
 
     /**
